@@ -1,5 +1,5 @@
 var should    = require('should'),
-    flagger   = require('../lib/flagger')
+    flagger   = require('../index')
     ;
 
 describe('Flagger:', function () {
