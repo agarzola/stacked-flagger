@@ -29,6 +29,18 @@ describe('Flagger:', function () {
     permalink: 'https://soc.net/path/to/post'
   }
 
+  var cleanPost = {
+    postId: '12345',
+    authorId: '54321',
+    source: {
+      network: 'socnet'
+    },
+    content: {
+      text: 'Clean post with no trigger words.'
+    },
+    permalink: 'https://soc.net/path/to/post'
+  }
+
   before(function () {
     // whut
   })
@@ -69,6 +81,16 @@ describe('Flagger:', function () {
       flaggedPost.flags[1].flagId.should.equal('flag2')
       flaggedPost.flags[1].loc[0].start.should.equal(11)
       flaggedPost.flags[1].loc[0].end.should.equal(14)
+
+      done()
+    })
+  })
+
+  it('should return a clean object when no flags matched', function (done) {
+    flagger(policy, [cleanPost], function (err, data) {
+      flaggedPost = data[0]
+
+      flaggedPost.should.not.have.property('flags', 'flagged')
 
       done()
     })
