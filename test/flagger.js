@@ -95,4 +95,29 @@ describe('Flagger:', function () {
       done()
     })
   })
+
+  it('should reconcile multiple hits within a hashtag', function (done) {
+    var hashedPost = {
+      postId: '12345',
+      authorId: '54321',
+      source: {
+        network: 'socnet'
+      },
+      content: {
+        text: '#somefoobares'
+      },
+      permalink: 'https://soc.net/path/to/post'
+    }
+
+    flagger(policy, [hashedPost], function (err, data) {
+      flaggedPost = data[0]
+
+      flaggedPost.flags[0].loc.should.be.an.instanceOf(Array).and.have.lengthOf(1)
+      flaggedPost.flags[0].loc[0].match.should.equal('foobar')
+      flaggedPost.flags[0].loc[0].start.should.equal(5)
+      flaggedPost.flags[0].loc[0].end.should.equal(11)
+
+      done()
+    })
+  })
 })
