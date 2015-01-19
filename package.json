@@ -1,0 +1,27 @@
+{
+  "name": "stacked-flagger",
+  "version": "0.0.0",
+  "description": "Flag posts according to a policy",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:agarzola/stacked-flagger.git"
+  },
+  "keywords": [
+    "stacked-sports",
+    "flagger"
+  ],
+  "author": "Alfonso Gómez-Arzola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agarzola/stacked-flagger/issues"
+  },
+  "homepage": "https://github.com/agarzola/stacked-flagger",
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "should": "^4.6.1"
+  }
+}
