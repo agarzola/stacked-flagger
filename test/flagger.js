@@ -120,4 +120,17 @@ describe('Flagger:', function () {
       done()
     })
   })
+
+  it('should throw an error when provided arguments are malformed', function (done) {
+    flagger.bind(null, {}, [post], function () {}).should.throw('The policy must have a `flags` property.')
+    flagger.bind(null, policy, [post]).should.throw('Missing a callback function.')
+    flagger.bind(null, policy, [post], 'not a callback').should.throw('The callback must be a function.')
+    flagger.bind(null, policy, null, function () {}).should.throw('Missing an array of posts to flag.')
+    flagger.bind(null, policy, [], function () {}).should.throw('Array of posts must not be empty.')
+    flagger.bind(null, policy, 'not an array of posts', function () {}).should.throw('Posts must be an array of post objects.')
+    flagger(policy, [{}], function (err, data) {
+      data[0].flaggingError.should.be.an.Error;
+      done()
+    })
+  })
 })
