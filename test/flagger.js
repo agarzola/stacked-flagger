@@ -2,7 +2,7 @@ var should    = require('should'),
     flagger   = require('../index')
     ;
 
-describe('Flagger:', function () {
+describe('Flagger', function () {
   var policy = {
     flags: [
         {
