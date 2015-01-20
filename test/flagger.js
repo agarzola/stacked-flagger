@@ -86,11 +86,12 @@ describe('Flagger', function () {
     })
   })
 
-  it('should return a clean object when no flags matched', function (done) {
+  it('should return a clean object with `flagged: false` when no flags matched', function (done) {
     flagger(policy, [cleanPost], function (err, data) {
       flaggedPost = data[0]
 
-      flaggedPost.should.not.have.property('flags', 'flagged')
+      flaggedPost.should.not.have.property('flags')
+      flaggedPost.flagged.should.equal(false)
 
       done()
     })
