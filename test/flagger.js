@@ -24,7 +24,7 @@ describe('Flagger', function () {
       network: 'socnet'
     },
     content: {
-      text: 'foo foobaz bar #hashfootagged'
+      text: 'foo foobaz bar #hashfootagged barfoo.'
     },
     permalink: 'https://soc.net/path/to/post'
   }
@@ -81,6 +81,8 @@ describe('Flagger', function () {
       flaggedPost.flags[1].flagId.should.equal('flag2')
       flaggedPost.flags[1].loc[0].start.should.equal(11)
       flaggedPost.flags[1].loc[0].end.should.equal(14)
+      flaggedPost.flags[1].loc[1].start.should.equal(30)
+      flaggedPost.flags[1].loc[1].end.should.equal(36)
 
       done()
     })
