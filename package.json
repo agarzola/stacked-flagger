@@ -1,6 +1,6 @@
 {
   "name": "stacked-flagger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Flag posts according to a policy",
   "main": "index.js",
   "scripts": {
